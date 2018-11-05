@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $('#btnLogin').click(function () {
+                username = $('#username').val()
+                password = $('#password').val()
+                $.ajax({
+                    'url':'/login_ajax_check',
+                    'type':'post',
+                    'data':{'username':username,'password':password},
+                    'dataType':'json'
+                }).success(function (data) {
+                    alert(data.res)
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    用户名:<input type="text" id="username"><br>
+    密码:<input type="password" id="password"><br>
+    <input type="button" id="btnLogin" value="登录">
+</body>
+</html>
